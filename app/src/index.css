@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/*
+  MDP Designsystem – Tokens
+  Farben aus dem Original-Logo abgeleitet: Blau (Souveränität, Ruhe) und
+  ein zurückhaltendes Gold (Wertigkeit, sparsam eingesetzt als Akzent).
+  Schrift: Systemschrift (SF Pro auf iPadOS) – schnell, offline-sicher,
+  nativ lesbar auch bei Sonnenlicht auf der Straße.
+*/
+@theme {
+  --font-sans: -apple-system, "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+
+  --color-mdp-navy-950: #08152b;
+  --color-mdp-navy-900: #0b1f3a;
+  --color-mdp-navy-800: #122a4d;
+  --color-mdp-navy-700: #1a3763;
+  --color-mdp-navy-600: #234880;
+  --color-mdp-navy-500: #2e5aa0;
+  --color-mdp-navy-400: #4c74b8;
+  --color-mdp-navy-100: #dfe7f3;
+  --color-mdp-navy-50: #f1f4f9;
+
+  --color-mdp-gold-700: #8a6a1c;
+  --color-mdp-gold-600: #a8842a;
+  --color-mdp-gold-500: #c2a03f;
+  --color-mdp-gold-400: #d3b661;
+  --color-mdp-gold-200: #ecdfb4;
+  --color-mdp-gold-100: #f5eed9;
+
+  --color-mdp-ink: #10131a;
+  --color-mdp-slate-700: #384152;
+  --color-mdp-slate-500: #64748b;
+  --color-mdp-slate-300: #cbd5e1;
+  --color-mdp-slate-200: #e2e8f0;
+  --color-mdp-slate-100: #eef1f5;
+
+  --color-mdp-bg: #f6f7f9;
+  --color-mdp-white: #ffffff;
+
+  --color-mdp-positive: #1e6b4f;
+  --color-mdp-caution: #9a5a12;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-mdp-bg);
+  color: var(--color-mdp-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--color-mdp-navy-100);
+}
+
+/* iPad: verhindert Doppel-Tap-Zoom auf Touchflächen */
+button, a {
+  touch-action: manipulation;
+}
