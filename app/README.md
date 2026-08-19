@@ -36,6 +36,5 @@ durch echte Authentifizierung ersetzen (siehe
 
 ## Logo
 
-`src/components/Logo.tsx` enthält aktuell nur einen Text-Platzhalter,
-keinen Nachbau des Original-Emblems — Begründung und Einbau-Anleitung
-direkt im Datei-Kommentar.
+`src/components/Logo.tsx` bindet das Original-Logo (`src/assets/mdp-logo.png`)
+unverändert als Bild ein — keine Nachbildung, keine Farb-/Formänderung.

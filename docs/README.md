@@ -5,9 +5,9 @@ Modernen Demokratischen Partei (MDP). Den lauffähigen Prototyp findest
 du in [`/app`](../app).
 
 **Zuerst lesen:** [`00-status-und-offene-punkte.md`](00-status-und-offene-punkte.md)
-— erklärt, welche Quellen (Logo-Datei, Parteiprogramm-PDF) in dieser
-Arbeitsumgebung tatsächlich verfügbar waren und was das für die
-Inhalte bedeutet.
+— erklärt, wie Original-Logo und Parteiprogramm-PDF eingearbeitet
+wurden, inklusive zweier dabei aufgefallener Korrekturen gegenüber der
+ursprünglichen Aufgabenstellung.
 
 | Dokument | Inhalt |
 |---|---|

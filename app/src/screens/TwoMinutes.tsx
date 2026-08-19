@@ -30,7 +30,7 @@ export function TwoMinutes() {
         >
           ← {index === -1 ? "Startseite" : "Zurück"}
         </button>
-        <Logo variant="wordmark" tone="light" />
+        <Logo variant="wordmark" />
         <button
           onClick={() => navigate("/")}
           className="min-h-[44px] rounded-xl px-3 text-base font-medium text-mdp-navy-100 hover:bg-white/10"
@@ -45,20 +45,8 @@ export function TwoMinutes() {
       >
         {index === -1 ? (
           <div className="flex flex-col items-center">
-            <div className="mb-8 flex h-32 w-32 items-center justify-center rounded-full border-4 border-mdp-gold-500">
-              <span className="text-3xl font-bold text-mdp-gold-400">MDP</span>
-            </div>
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-              Moderne Demokratische Partei
-            </h1>
-            <div className="mt-6 flex items-center gap-4 text-lg font-semibold uppercase tracking-[0.3em] text-mdp-gold-400">
-              <span>Ordnung</span>
-              <span className="text-mdp-navy-600">·</span>
-              <span>Zukunft</span>
-              <span className="text-mdp-navy-600">·</span>
-              <span>Freiheit</span>
-            </div>
-            <p className="mt-10 text-xl text-mdp-navy-100">Zum Start antippen</p>
+            <Logo variant="full" className="mb-4" />
+            <p className="mt-6 text-xl text-mdp-navy-100">Zum Start antippen</p>
           </div>
         ) : (
           card && (

@@ -13,6 +13,9 @@ export function ShiftModel() {
           Infrastruktur-Schichtmodell
         </h1>
         <p className="mt-3 text-lg text-mdp-slate-600">{shiftModel.intro.text}</p>
+        <p className="mt-4 rounded-2xl border border-mdp-slate-200 bg-mdp-slate-100 px-5 py-4 text-sm text-mdp-slate-600">
+          ⚠ {shiftModel.illustrationNote.text}
+        </p>
 
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
           <Card className="p-7">

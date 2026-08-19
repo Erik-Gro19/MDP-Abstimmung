@@ -12,6 +12,7 @@ export function HousingFund() {
         <h1 className="text-3xl font-bold text-mdp-navy-950 sm:text-4xl">
           Staatlicher Wohnungsbau
         </h1>
+        <p className="mt-3 text-lg text-mdp-slate-600">{housingFund.intro.text}</p>
 
         <div className="mt-8 max-w-xl">
           <FlowDiagram steps={housingFund.steps} />
@@ -29,6 +30,7 @@ export function HousingFund() {
             </div>
           ))}
         </div>
+        <p className="mt-2 text-xs text-mdp-slate-400">{housingFund.featuresSource}</p>
 
         <p className="mt-8 rounded-2xl bg-mdp-gold-100 px-5 py-4 text-sm text-mdp-gold-700">
           ℹ️ {housingFund.disclaimer}

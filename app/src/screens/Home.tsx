@@ -56,20 +56,8 @@ export function Home() {
 
       <main className="flex flex-1 flex-col items-center justify-center px-6 py-8 sm:px-12">
         <div className="mb-10 flex flex-col items-center text-center">
-          <div className="mb-5 flex h-24 w-24 items-center justify-center rounded-full border-4 border-mdp-gold-500 bg-mdp-navy-900">
-            <span className="text-2xl font-bold text-mdp-gold-400">MDP</span>
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight text-mdp-navy-950 sm:text-5xl">
-            Moderne Demokratische Partei
-          </h1>
-          <div className="mt-3 flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-mdp-gold-600">
-            <span>Ordnung</span>
-            <span className="text-mdp-slate-300">·</span>
-            <span>Zukunft</span>
-            <span className="text-mdp-slate-300">·</span>
-            <span>Freiheit</span>
-          </div>
-          <p className="mt-4 max-w-xl text-lg text-mdp-slate-500">
+          <Logo variant="full" className="mb-4" />
+          <p className="max-w-xl text-lg text-mdp-slate-500">
             Bürgerdialog-System für persönliche Gespräche
           </p>
         </div>

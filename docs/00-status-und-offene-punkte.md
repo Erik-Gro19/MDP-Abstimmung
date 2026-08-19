@@ -1,73 +1,83 @@
 # Status & offene Punkte
 
-Dieses Dokument fasst zusammen, was in dieser Arbeitsumgebung tatsächlich
-zur Verfügung stand, was daraus gebaut wurde, und was vor einem
-produktiven Einsatz zwingend noch erledigt werden muss.
+Dieses Dokument fasst zusammen, welche Quellen zur Verfügung standen,
+wie sie eingearbeitet wurden, und was vor einem produktiven Einsatz
+noch zu tun ist.
 
-## Was in dieser Session tatsächlich verfügbar war
+## Update: Logo und Parteiprogramm sind eingespielt
 
-Die Aufgabenstellung kündigt zwei Dateien an ("ich stelle dir zusätzlich
-1. PDF, 2. Logo zur Verfügung"). In der eigentlichen Bearbeitungsumgebung
-kamen davon an:
+Ursprünglich standen weder das Original-Logo noch die Parteiprogramm-
+PDF als Dateien zur Verfügung — nur eine Bild-Vorschau bzw. Zitate in
+der Aufgabenstellung selbst (siehe Git-Historie dieses Dokuments für
+den ursprünglichen Stand). Beide Dateien (`MDP.png` und
+`MDP_Gesamtwerk_V1_4_..._313_Seiten_mit_OriginalLogo.pdf`) wurden
+nachträglich in den Projekt-Ordner hochgeladen und sind jetzt
+eingearbeitet:
 
-- **Logo:** nur als Bild-Vorschau innerhalb der Aufgabenstellung selbst
-  sichtbar, **nicht** als Datei auf der Festplatte nutzbar.
-- **Parteiprogramm-PDF:** **nicht** angekommen — es existiert keine PDF-
-  Datei in diesem Arbeitsbereich.
+- **Logo:** `app/src/assets/mdp-logo.png` (aus der Originaldatei
+  verkleinert, keine Änderung an Farben/Formen/Symbolik) wird jetzt
+  überall in der App als echtes Bild angezeigt (`Logo.tsx`), inklusive
+  Favicon und Apple-Touch-Icon.
+- **Parteiprogramm:** Das 313-seitige "MDP – Gesamtwerk V1.4" wurde
+  vollständig ausgewertet (Kapitelstruktur, Zielbilder, Leitlinien,
+  Maßnahmenprogramme, Anlage B zum Parteivorsitz). Alle 12 Themen in
+  `app/src/data/content.ts` sind jetzt mit Kapitel- und Seitenangabe
+  als `status: "programm"` belegt — siehe
+  [`05-content-mapping.md`](05-content-mapping.md) für die vollständige
+  Quellen-Tabelle.
 
-Beides wurde geprüft (Dateisystem durchsucht, Git-Historie geprüft) — es
-ist wirklich nichts vorhanden.
+### Wichtige Korrekturen gegenüber der ursprünglichen Aufgabenstellung
 
-## Wie damit umgegangen wurde
+Der Abgleich mit dem echten Dokument deckte zwei Abweichungen von den
+Annahmen in der ursprünglichen Aufgabenstellung auf — beide wurden
+korrigiert, nichts wurde stillschweigend übernommen:
 
-Anstatt die App deswegen zu blockieren, wurde nach den beiden expliziten
-Vorgaben aus der Aufgabenstellung selbst gearbeitet:
+1. **Turnus der Vertrauensabstimmung.** Die Aufgabenstellung ging von
+   einer *jährlichen* Abstimmung aus. Das Programm (Anlage B,
+   Arbeitsblatt 2, Seite 215) nennt tatsächlich eine
+   **"Zufriedenheitsstimme alle vier Jahre"**. Die App wurde
+   entsprechend korrigiert. Die Schwelle "mehr als 50,1 %
+   Unzufriedenheit" (statt "mehr als 50 %") ist dagegen wortgleich
+   bestätigt.
+2. **Infrastruktur-Schichtmodell.** Das Programm bestätigt nur die
+   allgemeine Maßnahme *"Mehrschichtbetrieb bei geeigneten
+   Baustellen"* (Kap. XIV, Seite 82) — ohne konkrete Uhrzeiten und ohne
+   die Zwei-Kategorien-Aufteilung (Autobahnen/Brücken vs.
+   Wohnblocks/lärmsensible Bereiche) aus der ursprünglichen
+   Aufgabenstellung. Die App zeigt die konkrete Zeiteinteilung
+   weiterhin als **Illustration dieser Maßnahme**, kennzeichnet sie
+   aber deutlich als noch nicht im Programm ausformuliert
+   (`/konzepte/schichtmodell`).
 
-1. **"Kein neues Logo entwerfen."** → Es gibt aktuell nur einen reinen
-   Text-Platzhalter (MDP-Schriftzug in den Marken-Farben), **keinen**
-   Nachbau des Kreisemblems mit Säulen-Piktogramm. Ein Nachbau des
-   Emblems ohne Originaldatei wäre selbst ein "neues Logo entwerfen"
-   gewesen. Siehe `app/src/components/Logo.tsx` für die genaue
-   Begründung und die Anleitung, wie die echte Datei eingesetzt wird.
-2. **"Wenn die PDF eine Position nicht eindeutig enthält, erfinde keine
-   Position. Kennzeichne sie als Prüfauftrag."** → Die Aufgabenstellung
-   selbst enthält bereits wörtliche Zitate aus dem Programm (z. B. die
-   8 Kernaussagen für "MDP in 2 Minuten", das Schichtmodell, den
-   Wohnungsfonds-Kreislauf, die Vertrauensabstimmungs-Regeln). Diese
-   Zitate wurden 1:1 übernommen — nichts wurde umformuliert oder
-   erfunden. Da ich sie nicht gegen die Original-PDF gegenspiegeln
-   konnte, sind sie im Code als **"Prüfauftrag"** markiert (Badge im
-   Admin-Bereich → Inhalte & Themen), nicht als final bestätigt. Themen,
-   zu denen die Aufgabenstellung überhaupt keinen Text lieferte (Umwelt,
-   Außenpolitik, Landwirtschaft), zeigen ehrlich "Noch nicht
-   festgelegt" statt erfundener Inhalte.
+Zusätzlich enthielt Anlage B zum Parteivorsitz an mehreren Stellen nur
+generischen Platzhaltertext statt ausformulierter Verfahrensregeln
+(z. B. keine Aussage zur Geheimheit der Abstimmung). Das ist in der App
+als offener Punkt markiert (`/konzepte/vertrauen`).
 
-Siehe `docs/05-content-mapping.md` für die vollständige Quellen-Tabelle.
+### Themen, die vorher als "noch nicht festgelegt" galten
 
-## Vor einem echten Einsatz zwingend zu tun
+Umwelt, Außenpolitik und Landwirtschaft hatten in der ursprünglichen
+Aufgabenstellung keine Textgrundlage und wurden deshalb ehrlich leer
+gelassen. Das Parteiprogramm enthält zu allen dreien eigene, klar
+konturierte Kapitel (X, XXI, XXVIII–XXX) — die App zeigt jetzt für alle
+12 Themenkacheln echte, seitengenaue Positionen.
 
-1. **Logo-Originaldatei einsetzen.** SVG oder PNG (transparent, ≥512px)
-   bereitstellen und gemäß Anleitung in `Logo.tsx` einbinden.
-2. **Parteiprogramm-PDF einspielen und jede "Prüfauftrag"-Position im
-   Admin-Bereich (Inhalte & Themen) gegenlesen**, entweder bestätigen
-   oder korrigieren. Die vier offenen Themen (Umwelt, Außenpolitik,
-   Landwirtschaft, und die Trennung von "Bildung" / "Technologie")
-   ausformulieren.
-3. **Rechtliche Prüfung** von Datenschutz, Rechtsgrundlage,
+## Vor einem echten Einsatz weiterhin zu tun
+
+1. **Prüfpunkte aus dem Programm selbst auflösen** (nicht durch mich zu
+   entscheiden): Geheimheit der Vertrauensabstimmung, genaues Quorum,
+   konkrete Uhrzeiten/Kategorien im Schichtmodell — siehe die
+   "Prüfauftrag"-Badges im Admin-Bereich → Inhalte & Themen.
+2. **Rechtliche Prüfung** von Datenschutz, Rechtsgrundlage,
    Speicherfristen und Vorgaben für politische Parteien (siehe
-   `docs/07-datenschutzkonzept.md`) — ausdrücklich noch offen.
-4. **Admin-Authentifizierung ersetzen.** Der aktuelle PIN-Schutz
-   (`AdminGate.tsx`) ist ein reiner Demo-Mechanismus, keine echte
-   Zugriffskontrolle.
-5. **Backend/Sync für Mehrgeräte-Betrieb**, falls mehrere iPads
-   gleichzeitig im Einsatz sein sollen (siehe `docs/06-offline-konzept.md`
-   — der Prototyp speichert bewusst nur lokal pro Gerät).
-6. **Native iPadOS-Verpackung entscheiden**: Diese Session hat den
-   klickbaren Prototyp als iPad-optimierte Web-App (React/Vite)
-   gebaut, testbar direkt im Safari-Browser oder "Zum Home-Bildschirm
-   hinzufügen". Für eine echte App-Store-App müsste dieselbe Logik in
-   SwiftUI portiert oder mit einem WebView-Wrapper (z. B. Capacitor)
-   verpackt werden — das war in dieser Umgebung nicht sinnvoll
-   ausführ- und testbar (kein Xcode/iOS-Simulator verfügbar), eine
-   Web-App ließ sich dagegen tatsächlich bauen und im Browser
-   durchklicken.
+   `docs/07-datenschutzkonzept.md`) — weiterhin offen.
+3. **Admin-Authentifizierung ersetzen.** Der aktuelle PIN-Schutz
+   (`AdminGate.tsx`) ist ein reiner Demo-Mechanismus.
+4. **Backend/Sync für Mehrgeräte-Betrieb**, falls mehrere iPads
+   gleichzeitig im Einsatz sein sollen (siehe
+   `docs/06-offline-konzept.md`).
+5. **Native iPadOS-Verpackung entscheiden.** Der klickbare Prototyp ist
+   eine iPad-optimierte Web-App (React/Vite), testbar direkt im Safari-
+   Browser oder per "Zum Home-Bildschirm hinzufügen". Für eine echte
+   App-Store-App müsste dieselbe Logik in SwiftUI portiert oder mit
+   einem WebView-Wrapper verpackt werden.

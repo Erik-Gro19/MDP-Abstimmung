@@ -36,7 +36,7 @@ export function Shell({ children, onBack, backLabel = "Zurück", hideHome, dark 
           className="cursor-pointer"
           aria-label="Zur Startseite"
         >
-          <Logo variant="wordmark" tone={dark ? "light" : "dark"} />
+          <Logo variant="wordmark" />
         </button>
         <OnlineStatus />
       </header>
